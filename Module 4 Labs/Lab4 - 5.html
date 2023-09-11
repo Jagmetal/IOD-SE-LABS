@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News Page</title>
+  <style>
+   
+    .news-container {
+      margin-bottom: 10px;
+    }
+    .news-title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .news-content {
+      margin-top: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="newsContainer"></div>
+
+  <form id="addNewsForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" rows="4" required></textarea><br><br>
+
+    <button type="submit">Add News</button>
+
+  </form>
+
+  <script>
+    let news = [
+      { id: 1, title: 'News1', content: 'bla' },
+      { id: 2, title: 'News2', content: 'ble' },
+      { id: 3, title: 'News3', content: 'blu' },
+      { id: 4, title: 'News4', content: 'jag' },
+      { id: 5, title: 'News5', content: 'devil' },
+      { id: 6, title: 'News6', content: 'angel' },
+        ];
+
+    function displayNews() {
+      const newsContainer = document.getElementById('newsContainer');
+      newsContainer.innerHTML = '';
+
+      news.forEach(function(item) {
+        const newsDiv = document.createElement('div');
+        newsDiv.className = 'news-container';
+
+        const titleElement = document.createElement('h2');
+        titleElement.className = 'news-title';
+        titleElement.textContent = item.title;
+
+        const contentElement = document.createElement('p');
+        contentElement.className = 'news-content';
+        contentElement.textContent = item.content;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete'
+        deleteButton.addEventListener('click', function() {
+            deleteNewsItem(item.id)
+            displayNews()
+        })
+
+        newsDiv.appendChild(titleElement);
+        newsDiv.appendChild(contentElement);
+        newsDiv.appendChild(deleteButton);
+
+        newsContainer.appendChild(newsDiv);
+      });
+    }
+
+    displayNews();
+
+    setInterval(function() {
+      displayNews();
+    }, 5000);
+
+    const form = document.getElementById('addNewsForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+
+      addNewsItem(title, content);
+
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+
+      displayNews();
+    });
+
+    function addNewsItem(title, content) {
+      const newId = news.length > 0 ? news[news.length - 1].id + 1 : 1;
+      const newNewsItem = { id: newId, title: title, content: content };
+      news.push(newNewsItem);
+    }
+
+    function deleteNewsItem(id) {
+        news = news.filter(function(item){
+            return item.id !== id;
+        })
+    }
+
+
+  </script>
+</body>
+</html>

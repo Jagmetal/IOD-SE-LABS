@@ -1,0 +1,22 @@
+Updated by: Davinder S. 
+
+This is the lab 1-1
+
+You have been hired by devsInc to create a landing page for their
+new project. They want to support people playing tabletop games
+from home and require a Dice Generator.
+Features:
+The user should be able to use different dice, such as a D6 or a D10
+(number of faces).
+
+
+
+Define on paper, all the use cases (functionalities) you will need
+for this page.
+• Make a simple storyboard of the user using the system.
+• Create a git branch for the project in the main repository
+• Work on the project creating 3 files, one for the UI, one for the styling one for the JS to roll the dice 
+• Create the roll functionality by passing an argument, in order to
+reutilise the same function multiple times
+• Write a test for the roll dice functionality.
+• When complete, push the content to your git branch.

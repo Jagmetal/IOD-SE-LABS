@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 1;
+        }
+
+        main {
+            display: flex;
+        }
+
+        .left {
+            min-height: 100vh;
+            border: 3px solid gray;
+            background-color: rgb(93, 11, 11);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+        }
+
+        .left h2 {
+            background-color: rgb(134, 28, 28);
+        }
+
+        .left h3 {
+            background-color: rgb(134, 28, 28);
+        }
+
+        .right {
+            border: 3px solid gray;
+            background-color: gray;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 4;
+            align-items: stretch;
+            flex-basis: 100%;
+        }
+
+        .profilepic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<main>
+    <div class="left">
+        <h1>Jagwinder Singh - Resume</h1>
+        <img src="/module2/lab4-buildyourwebsite/src/321965079_852538132677212_7233941286447712862_n.jpg"
+            class="profilepic">
+        <p>Software Engineering Student</p>
+        <h2>Personal Information</h2>
+        <div>
+            <p><a href="Mob:+64210687491"> +64210687491</a></p>
+            <p><a href="Email:jagsingh@hotmail.co.nz"> jagsingh@hotmail.co.nz</a></p>
+        </div>
+        <h3>Skills</h3>
+        <div>
+            <ul>
+                <li>Music Composition</li>
+                <li>Sound Engineering</li>
+                <li>Multi-Instrumentalist</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="right">
+        <h1>Experience</h1>
+        <h2>Guitar Instructor</h2>
+        <P>Auckland Normal Intermediate, January 2023 - Present</P>
+        <h2>Business Sales Specialist</h2>
+        <div>
+            <p>Probe CX, Jan 2019 - Dec 2022</p>
+            <h1>Education</h1>
+            <div>
+                <h2>Institute of Data Software Engineering Course</h2>
+                <p>Institute of Data, May 2023 - present</p>
+                <h2>Music and Audio Institute of New Zealand</h2>
+                <div>
+                    <p>Diploma in Audio Engineering and Music Production 2011 - 2013</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<body>
+    <footer>Created by: Jagwinder Singh, 2023</footer>
+</body>
+
+</html>

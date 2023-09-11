@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3f2fd;
+        }
+
+        .card {
+            padding: 10px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 3em;
+            padding: 0 0 10px 0;
+        }
+
+        .card-description {
+            font-weight: 400;
+            font-size: 2em;
+        }
+
+        .portfolio-image{
+            width:100px;
+            height: 100px;
+        }
+    </style>
+
+    <script>
+
+        const artist = {
+            name: 'Van Gogh',
+            portfolio: [
+                {
+                    title: 'portrait',
+                    url: 'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image',
+                },
+                {
+                    title: 'sky',
+                    url: 'https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg',
+                },
+                {
+                    title: 'Saiyan',
+                    url: 'https://static.wikia.nocookie.net/dragonuniverse/images/8/89/SSJ3.png/revision/latest?cb=20160928233848'
+                }
+
+            ],
+        };
+
+        function populatePortfolioTemplate(portfolio) {
+            const template = document.getElementById('portfolio-template').content.cloneNode(true);
+            template.querySelector('.card-title').innerText = portfolio.title;
+            template.querySelector('.card-image').src = portfolio.url;
+            return template;
+        }
+
+        function createArtistCard(artist) {
+            const template = document.getElementById('artist-template').content.cloneNode(true);
+            template.querySelector('.card-title').innerText = artist.name;
+
+            var portfolios = '';
+            artist.portfolio.forEach(portfolio => {
+                var portfolio = populatePortfolioTemplate(portfolio) 
+                template.querySelector('.portfolio').appendChild(portfolio)
+                });
+
+
+
+
+
+            document.querySelector('#artist-profile').appendChild(template);
+        }
+
+        window.onload = () => {
+            createArtistCard(artist);
+        }
+
+
+    </script>
+
+    <template id="artist-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"></div>
+                <div class="portfolio"></div>
+            </div>
+        </div>
+    </template>
+  
+
+    <template id="portfolio-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"></div>
+                <div class="card-text"></div>
+                <img class="card-image portfolio-image">
+            </div>
+        </div>
+    </template>
+    <div id="artist-profile"></div>
+
+</body>
+
+</html>

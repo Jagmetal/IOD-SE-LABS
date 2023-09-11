@@ -1,0 +1,38 @@
+Lab 1, part 2 - Submitting HTML forms
+
+In this exercise you can create a simple server to receive the form data from the website to your computer.
+
+To do this, you'll be starting a dummy json server that will receive form data filled from our website whenever we submit, and save the value of the fields into the hard drive. It’s a helpful tool that allows us to create simplistic web-servers in a very short time.
+
+This is especially useful for learning, trying out new things and prototyping.
+
+1. Open new terminal tab
+2. Start the server by typing : npx json-server db.json
+3. This will start a dummy server on the default port (3000) which manages the data defined in db.json, which will be created by default for you the first time you run it.
+4. As our form is related to the profile, we'll be posting filled-in profiles into the server.
+After starting a server you should see this URL - http://localhost:3000/profile - in the message.
+This means that your computer (localhost) will operate traffic on the port 3000 and path /profile.
+URL stands for Unique Resource Locator and - profile is a Resource in that case.
+You can also visit http://localhost:3000/ in the browser to find more details.
+Generally speaking, Resources can be created, updated and obtained.
+4. Update the form tag in your form.html file. 
+```
+<form method="POST" action="http://localhost:3000/profile">
+</form>
+```
+
+5. Fill in the form and submit. In the terminal you can see that new message was logged, something like this: 
+```
+    POST /profile 201 31.355 ms - 67
+```
+That means that our json-server received POST message at path /profile
+6. Navigate to localhost:3000/profile in the browser to check the contents of ‘profile’
+7. Go to the json-server terminal and observe another log message added at the end. That means that your browser accessed the profile (GET /profile).
+```
+    GET /profile 200 3.056 ms - 66
+```
+8. Inspect the content of db.json file created by json-server
+
+
+Links:
+json-server (github) - https://github.com/typicode/json-server

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3f2fd;
+        }
+
+        .card {
+            padding: 10px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 3em;
+            padding: 0 0 10px 0;
+        }
+
+        .card-description {
+            font-weight: 400;
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="card-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"></div>
+                <div class="card-text"></div>
+                <img class="card-image" src="" alt="Artwork">
+            </div>
+        </div>
+    </template>
+    <div id="card-list"></div>
+
+    <script>
+        const data = [
+            { name: 'bob', age: 23 },
+            { name: 'alice', age: 39 },
+            { name: 'Jag', age: 29},
+           
+        ];
+
+        const artist = {
+            name: 'Van Gogh',
+            portfolio: [
+                {
+                    title: 'portrait',
+                    url: 'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image',
+                },
+                {
+                    title: 'sky',
+                    url: 'https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg',
+                },
+                {
+                    title: 'Saiyan',
+                    url: 'https://static.wikia.nocookie.net/dragonuniverse/images/8/89/SSJ3.png/revision/latest?cb=20160928233848'
+                }
+                
+            ],
+        };
+
+        function addCard(name, description, imageUrl) {
+            const template = document.getElementById('card-template').content.cloneNode(true);
+            template.querySelector('.card-title').innerText = name;
+            template.querySelector('.card-text').innerText = description;
+            const imageElement = template.querySelector('.card-image');
+            imageElement.src = imageUrl;
+            document.querySelector('#card-list').appendChild(template);
+        }
+
+        if ('content' in document.createElement('template')) {
+            data.forEach(({ name, age }) => {
+                const { title, url } = artist.portfolio[Math.floor(Math.random() * artist.portfolio.length)];
+                const description = `Name: ${name}, Age: ${age}, Title: ${title}`;
+                addCard(name, description, url);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
